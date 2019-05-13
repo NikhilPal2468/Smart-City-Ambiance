@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.smartcityambiance">
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"  />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/icon_sca"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
+        android:label="SCA"
+        android:roundIcon="@drawable/icon_sca"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity android:name=".Transport.TransportFeedbackActivity"
+            android:parentActivityName=".Transport.TransportFirstResultActivity"/>
+        <activity android:name=".Living.LivingGalleryActivity"
+            android:parentActivityName=".Living.LivingFirstResultActivity"/>
+        <activity android:name=".Living.LivingFeedbackActivity"
+            android:parentActivityName=".Living.LivingFirstResultActivity"/>
+        <activity android:name=".Living.LivingInfoActivity"
+            android:parentActivityName=".Living.LivingFirstResultActivity"/>
+        <activity android:name=".Living.LivingFourthResultActivity"
+            android:parentActivityName=".Living.LivingActivity"/>
+        <activity android:name=".Living.LivingThirdResultActivity"
+            android:parentActivityName=".Living.LivingActivity"/>
+        <activity android:name=".Living.LivingSecondResultActivity"
+            android:parentActivityName=".Living.LivingActivity"/>
+       <activity android:name=".Transport.TransportInfoActivity"
+           android:parentActivityName=".Transport.TransportFirstResultActivity"/>
+        <activity android:name=".Transport.TransportGalleryActivity"
+            android:parentActivityName=".Transport.TransportFirstResultActivity"/>
+        <activity android:name=".Event.EventFeedbackActivity"
+            android:parentActivityName=".Event.EventFirstResultActivity"/>
+        <activity android:name=".Event.EventGalleryActivity"
+            android:parentActivityName=".Event.EventFirstResultActivity"/>
+        <activity android:name=".Eat.FeedbackOneActivity"
+            android:parentActivityName=".Eat.EatFirstResultActivity"/>
+        <activity android:name=".Eat.GalleryThirdActivity"
+            android:parentActivityName=".Eat.EatFirstResultActivity"/>
+        <activity android:name=".Eat.GallerySecondActivity"
+            android:parentActivityName=".Eat.EatFirstResultActivity"/>
+        <activity android:name=".Eat.GalleryOneActivity"
+            android:parentActivityName=".Eat.EatFirstResultActivity" />
+        <activity android:name=".Eat.InfoActivity"
+            android:parentActivityName=".Eat.EatFirstResultActivity"/>
+        <activity android:name=".Event.EventFourthResultActivity"
+            android:parentActivityName=".Event.EventActivity" />
+        <activity android:name=".Event.EventThirdResultActivity"
+            android:parentActivityName=".Event.EventActivity" />
+        <activity android:name=".Event.EventSecondResultActivity"
+            android:parentActivityName=".Event.EventActivity" />
+        <activity android:name=".Event.EventFirstResultActivity"
+            android:parentActivityName=".Event.EventActivity" />
+        <activity android:name=".Event.EventActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".Event.EventInfoActivity"
+            android:parentActivityName=".Event.EventActivity" />
+        <activity android:name=".Transport.TransportFourthResultActivity"
+            android:parentActivityName=".Transport.TransportActivity" />
+        <activity android:name=".Transport.TransportThirdResultActivity"
+            android:parentActivityName=".Transport.TransportActivity" />
+        <activity android:name=".Transport.TransportSecondResultActivity"
+            android:parentActivityName=".Transport.TransportActivity" />
+        <activity android:name=".Transport.TransportFirstResultActivity"
+            android:parentActivityName=".Transport.TransportActivity" />
+        <activity android:name=".Transport.TransportActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".Living.LivingFirstResultActivity"
+            android:parentActivityName=".Living.LivingActivity" />
+        <activity android:name=".Living.LivingActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".Eat.EatFourthResultActivity"
+            android:parentActivityName=".Eat.EatActivity" />
+        <activity android:name=".Eat.EatThirdResultActivity"
+            android:parentActivityName=".Eat.EatActivity" />
+        <activity android:name=".Eat.EatSecondResultActivity"
+            android:parentActivityName=".Eat.EatActivity" />
+        <activity android:name=".Eat.EatFirstResultActivity"
+            android:parentActivityName=".Eat.EatActivity" />
+        <activity android:name=".Eat.EatActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".Navigation.VersionActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".Navigation.FeedbackActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".Navigation.RegistrationActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".Navigation.MyAccountActivity"
+            android:parentActivityName=".MainActivity"/>
+
+
+
+        <activity
+            android:name=".MainActivity"
+            android:label="SCA"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
