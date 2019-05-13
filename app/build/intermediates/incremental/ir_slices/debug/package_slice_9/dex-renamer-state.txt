@@ -1,4 +1,0 @@
-#Sat Apr 27 21:21:28 CEST 2019
-base.0=/Users/adamsagaev/Desktop/MOD/hci1_19s_group_113/app/build/intermediates/transforms/dexMerger/debug/9
-path.0=classes.dex
-renamed.0=classes.dex
