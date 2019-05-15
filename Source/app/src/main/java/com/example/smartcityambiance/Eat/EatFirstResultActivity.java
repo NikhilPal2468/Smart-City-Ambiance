@@ -23,8 +23,7 @@ public class EatFirstResultActivity extends AppCompatActivity {
 
     // flag used for default at the beginning for add 4 default Objekt
     private boolean flag = true;
-    private boolean rating = true;
-
+    private static boolean rating = true;
 
     //Private ImageButtons for Emojis
    private ImageButton firstEmoj;
@@ -37,10 +36,12 @@ public class EatFirstResultActivity extends AppCompatActivity {
    private Button gallery;
    private Button feedback;
    // Use for Statistik value
-   private float firstStatistik = 0;
-   private float secondStatistik = 0;
-   private float thirdStatistik = 0;
-   private float fourthStatistik = 0;
+    private static float firstStatistik = 25;
+    private static float secondStatistik = 35;
+    private static float thirdStatistik = 10;
+    private static float fourthStatistik = 44;
+
+   static String piecentertext;
 
 
 
@@ -67,11 +68,6 @@ public class EatFirstResultActivity extends AppCompatActivity {
         if(flag) {
 
             //Default Statistik Values at the beginning
-            firstStatistik = 35f;
-            secondStatistik = 25f;
-            thirdStatistik = 15f;
-            fourthStatistik = 25f;
-
 
             // Two ArrayList, One for Statistik value and position, and second for empty STring
             entries = new ArrayList<>();
@@ -85,18 +81,17 @@ public class EatFirstResultActivity extends AppCompatActivity {
             pieDataSet = new PieDataSet(entries, "");
             pieData = new PieData(PieEntryLabels, pieDataSet);
 
-
             // pieChart Colors textsize etc.
             pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
             pieDataSet.setValueTextColor(Color.WHITE);
             pieDataSet.setValueTextSize(12f);
             pieDataSet.setSliceSpace(5f);
+            pieChart.setCenterTextSize(34f);
+           //pieChart.setCenterTextSizePixels(10f);
 
             // Set pieData in pieChart
             pieChart.setData(pieData);
-
-            pieChart.animateY(1000);
-
+            pieChart.animateY(1600);
             flag = false;
 
         }
@@ -156,6 +151,7 @@ public class EatFirstResultActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
                 //checking if the place is already been rated
                 if(rating){
                     rating = false;
@@ -164,17 +160,24 @@ public class EatFirstResultActivity extends AppCompatActivity {
 
                     //Here after Feedback Statistik changed +1 and saved
                     fourthStatistik += 1;
+                    piecentertext = Float.toString(fourthStatistik);
+                    pieChart.setCenterText(piecentertext);
 
                     //Method that changed Statistik pie Chart
                     changedStatistikResult();
 
-                    //Refresh Activity
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
                 }
                 else {
+
                         Toast t = (Toast) Toast.makeText(EatFirstResultActivity.this, "You already rated!", lengthLong);
                         t.show();
-                     }
+
+                    piecentertext = Float.toString(fourthStatistik);
+                    pieChart.setCenterText(piecentertext);
+                    changedStatistikResult();
+
+                    }
 
 
             }
@@ -185,26 +188,34 @@ public class EatFirstResultActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                    //checking if the place is already been rated
-                    if (rating) {
-                        rating = false;
-                        Toast t = (Toast) Toast.makeText(EatFirstResultActivity.this, toast, lengthLong);
-                        t.show();
+                //checking if the place is already been rated
+                if(rating){
+                    rating = false;
+                    Toast t = (Toast) Toast.makeText(EatFirstResultActivity.this, toast, lengthLong);
+                    t.show();
 
-                        //Here after Feedback Statistik changed +1 and saved
-                        thirdStatistik += 1;
+                    //Here after Feedback Statistik changed +1 and saved
+                    thirdStatistik += 1;
+                    piecentertext = Float.toString(thirdStatistik);
+                    pieChart.setCenterText(piecentertext);
+                    //Method that changed Statistik pie Chart
 
-                        //Method that changed Statistik pie Chart
-                        changedStatistikResult();
+                    changedStatistikResult();
 
-                        //Refresh Activity
-                        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                    } else {
+
+
+                }
+                else {
                         Toast t = (Toast) Toast.makeText(EatFirstResultActivity.this, "You already rated!", lengthLong);
                         t.show();
+
+                    piecentertext = Float.toString(thirdStatistik);
+                    pieChart.setCenterText(piecentertext);
+
+                    changedStatistikResult();
+
                     }
                 }
-
         });
 
         //With click on this emojis the place ist rated
@@ -220,17 +231,23 @@ public class EatFirstResultActivity extends AppCompatActivity {
 
                     //Here after Feedback Statistik changed +1 and saved
                     secondStatistik += 1;
+                    piecentertext = Float.toString(secondStatistik);
+                    pieChart.setCenterText(piecentertext);
 
-                    //Method that changed Statistik pie Chart
                     changedStatistikResult();
 
-                    //Refresh Activity
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
                 }
 
                 else{
                     Toast t = (Toast) Toast.makeText(EatFirstResultActivity.this, "You already rated!", lengthLong);
                     t.show();
+
+                    piecentertext = Float.toString(secondStatistik);
+                    pieChart.setCenterText(piecentertext);
+
+                    changedStatistikResult();
+
                 }
             }
         });
@@ -248,23 +265,32 @@ public class EatFirstResultActivity extends AppCompatActivity {
 
                     //Here after Feedback Statistik changed +1 and saved
                     firstStatistik += 1;
-
+                    piecentertext = Float.toString(firstStatistik);
+                    pieChart.setCenterText(piecentertext);
                     //Method that changed Statistik pie Chart
-                    changedStatistikResult();
 
-                    //Refresh Activity
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                    changedStatistikResult();;
+
                 }
 
                 else{
                     Toast t = (Toast) Toast.makeText(EatFirstResultActivity.this, "You already rated!", lengthLong);
                     t.show();
+
+                    piecentertext = Float.toString(firstStatistik);
+                    pieChart.setCenterText(piecentertext);
+
+
+
+                    changedStatistikResult();
+
                 }
             }
         });
 
 
     }
+
 
     //Quelle approximately 60% Code from -> https://www.android-examples.com/pie-chart-graph-android-app-using-mpandroidchart/
     //In the List added values
@@ -288,7 +314,7 @@ public class EatFirstResultActivity extends AppCompatActivity {
 
 
 
-    //Method that changed Statistik Results
+
     public void changedStatistikResult(){
         entries = new ArrayList<>();
         PieEntryLabels = new ArrayList<String>();
@@ -300,8 +326,10 @@ public class EatFirstResultActivity extends AppCompatActivity {
         pieDataSet.setValueTextColor(Color.WHITE);
         pieDataSet.setValueTextSize(12f);
         pieDataSet.setSliceSpace(5f);
+        pieChart.setCenterTextSize(34f);
+       // pieChart.setCenterTextSizePixels(10f);
         pieChart.setData(pieData);
-        pieChart.animateY(1000);
+        pieChart.animateY(1600);
     }
 
 }

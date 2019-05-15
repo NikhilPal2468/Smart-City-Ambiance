@@ -15,6 +15,11 @@ import java.util.List;
 
 public class EatActivity extends AppCompatActivity {
 
+    @Override
+    public void setTitle(CharSequence title) {
+        super.setTitle(title);
+    }
+
     // Array of strings for Restourant name
     String[] restourantTitle = new String[]{
             "The Italians",
@@ -38,7 +43,7 @@ public class EatActivity extends AppCompatActivity {
 
     // Array of strings for Restourant Description
     String[] restourantDescription = new String[]{
-            "Eat Italian in Wien like the Italians in Italy..",
+            "Eat Italian in Vienna like the Italians in Italy..",
             "Drink, Eat, Smoke",
             "Burgers from USA",
             "Austrian speciality",

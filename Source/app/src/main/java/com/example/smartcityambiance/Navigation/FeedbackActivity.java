@@ -40,7 +40,7 @@ public class FeedbackActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ratin_feedback_navigation);
+        setContentView(R.layout.activity_feedback);
 
         //adding default users into list
         if(!isAdded){
@@ -111,7 +111,7 @@ public class FeedbackActivity extends AppCompatActivity {
         int[] to = {R.id.listview_image, R.id.listview__title, R.id.listview_description};
 
         //text_view_for_eatlist is our Shablon that add in ListView in every singel line Foto , name and mean from User
-        SimpleAdapter simpleAdapter = new SimpleAdapter(getBaseContext(), aList, R.layout.feedback_for_sendwichbutton, from, to);
+        SimpleAdapter simpleAdapter = new SimpleAdapter(getBaseContext(), aList, R.layout.text_view_for_eatlist, from, to);
         ListView search = (ListView) findViewById(R.id.listfeedbackid);
         search.setAdapter(simpleAdapter);
 

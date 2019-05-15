@@ -22,7 +22,6 @@ import java.util.ArrayList;
 
 public class TransportFourthResultActivity extends AppCompatActivity {
 
-
     private ImageButton firstEmoj;
     private ImageButton secondEmoj;
     private ImageButton thirdEmoj;
@@ -33,12 +32,14 @@ public class TransportFourthResultActivity extends AppCompatActivity {
     private Button feedback;
 
     private boolean flag = true;
-    private boolean rating = true;
+    private static boolean rating = true;
 
-    private float firstStatistik = 0;
-    private float secondStatistik = 0;
-    private float thirdStatistik = 0;
-    private float fourthStatistik = 0;
+    static String piecentertext;
+
+    private static float firstStatistik = 15;
+    private static float secondStatistik = 22;
+    private static float thirdStatistik = 38;
+    private static float fourthStatistik = 9;
 
     //Quelle https://www.android-examples.com/pie-chart-graph-android-app-using-mpandroidchart/
     PieChart pieChart ;
@@ -52,92 +53,90 @@ public class TransportFourthResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transport_fourth_result);
 
+        //Quelle approximately 60% Code from -> https://www.android-examples.com/pie-chart-graph-android-app-using-mpandroidchart/
+
+        pieChart = (PieChart) findViewById(R.id.chart1);
+
+        pieChart.setCenterText("SCA");
 
 
-            //Quelle approximately 60% Code from -> https://www.android-examples.com/pie-chart-graph-android-app-using-mpandroidchart/
+        // at the beginning Add default Piechart
+        if(flag) {
+            // Two ArrayList, One for Statistik value and position, and second for empty STring
+            entries = new ArrayList<>();
+            PieEntryLabels = new ArrayList<String>();
 
-            pieChart = (PieChart) findViewById(R.id.chart1);
+            //Methods are called
+            AddValuesToPIEENTRY();
+            AddValuesToPieEntryLabels();
 
-            pieChart.setCenterText("SCA");
+            //Add first entries LIst in pieDataset and then empty String und pieset in pieData
+            pieDataSet = new PieDataSet(entries, "");
+            pieData = new PieData(PieEntryLabels, pieDataSet);
 
-            // at the beginning Add default Piechart
-            if(flag) {
-                //Default Statistik Values at the beginning
-                firstStatistik = 35f;
-                secondStatistik = 25f;
-                thirdStatistik = 15f;
-                fourthStatistik = 25f;
-                // Two ArrayList, One for Statistik value and position, and second for empty STring
-                entries = new ArrayList<>();
-                PieEntryLabels = new ArrayList<String>();
-                //Methods are called
-                AddValuesToPIEENTRY();
-                AddValuesToPieEntryLabels();
-                //Add first entries LIst in pieDataset and then empty String und pieset in pieData
-                pieDataSet = new PieDataSet(entries, "");
-                pieData = new PieData(PieEntryLabels, pieDataSet);
-                // pieChart Colors textsize etc.
-                pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-                pieDataSet.setValueTextColor(Color.WHITE);
-                pieDataSet.setValueTextSize(12f);
-                pieDataSet.setSliceSpace(5f);
-                // Set pieData in pieChart
-                pieChart.setData(pieData);
+            // pieChart Colors textsize etc.
+            pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+            pieDataSet.setValueTextColor(Color.WHITE);
+            pieDataSet.setValueTextSize(12f);
+            pieDataSet.setSliceSpace(5f);
+            pieChart.setCenterTextSize(34f);
+            //pieChart.setCenterTextSizePixels(10f);
 
-                pieChart.animateY(1000);
+            // Set pieData in pieChart
+            pieChart.setData(pieData);
+            pieChart.animateY(1600);
+            flag = false;
 
-                flag = false;
+        }
 
+        // return button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // 4 Emoj Buttons
+        firstEmoj = (ImageButton) findViewById(R.id.smile1id);
+        secondEmoj = (ImageButton) findViewById(R.id.smile2id);
+        thirdEmoj = (ImageButton) findViewById(R.id.smile3id);
+        fourthEmoj = (ImageButton) findViewById(R.id.smile4id);
+
+        //Buttons for indo gallery and feedback
+        info = (Button) findViewById(R.id.infoirishid);
+        gallery = (Button) findViewById(R.id.galleryirishid);
+        feedback = (Button) findViewById(R.id.feedbackirishid);
+
+
+        //String for toast
+        final int lengthLong = Toast.LENGTH_LONG;
+        final String toast = "Thanks for your Feedback!";
+
+
+        // After click gallery button user can restoran fotos see
+        gallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(TransportFourthResultActivity.this, TransportGalleryActivity.class);
+                startActivity(i);
             }
+        });
+
+        // After click info button user can info see
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(TransportFourthResultActivity.this, TransportInfoActivity.class);
+                startActivity(i);
+            }
+        });
+
+        // After click feedback button user can write kommentar and read kommentars from ather users.
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(TransportFourthResultActivity.this, TransportFeedbackActivity.class);
+                startActivity(i);
+            }
+        });
 
 
-            // return button
-
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-            // 4 Emoj Buttons
-            firstEmoj = (ImageButton) findViewById(R.id.smile1id);
-            secondEmoj = (ImageButton) findViewById(R.id.smile2id);
-            thirdEmoj = (ImageButton) findViewById(R.id.smile3id);
-            fourthEmoj = (ImageButton) findViewById(R.id.smile4id);
-
-            //Buttons for indo gallery and feedback
-            info = (Button) findViewById(R.id.infoid);
-            gallery = (Button) findViewById(R.id.galleryoneid);
-            feedback = (Button) findViewById(R.id.feedbackfourtid);
-
-            //String for toast
-            final int lengthLong = Toast.LENGTH_LONG;
-            final String toast = "Thanks for your Feedback!";
-
-
-            // After click gallery button user can Transport fotos see
-            gallery.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent i = new Intent(TransportFourthResultActivity.this, TransportGalleryActivity.class);
-                    startActivity(i);
-                }
-            });
-
-            // After click info button user can info see
-            info.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent i = new Intent(TransportFourthResultActivity.this, TransportInfoActivity.class);
-                    startActivity(i);
-                }
-            });
-
-            // After click feedback button user can write kommentar and read kommentars from ather users.
-            feedback.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent i = new Intent(TransportFourthResultActivity.this, TransportFeedbackActivity.class);
-                    startActivity(i);
-                }
-            });
 
         //With click on this emojis the place ist rated
         firstEmoj.setOnClickListener(new View.OnClickListener() {
@@ -154,16 +153,22 @@ public class TransportFourthResultActivity extends AppCompatActivity {
                     //Here after Feedback Statistik changed +1 and saved
                     fourthStatistik += 1;
 
+                    //changing the string in the center of the statistic, by tapping the button
+                    piecentertext = Float.toString(fourthStatistik);
+                    pieChart.setCenterText(piecentertext);
+
                     //Method that changed Statistik pie Chart
                     changedStatistikResult();
 
-                    //Refresh Activity
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 }
                 else {
 
                     Toast t = (Toast) Toast.makeText(TransportFourthResultActivity.this, "You already rated!", lengthLong);
                     t.show();
+
+                    piecentertext = Float.toString(fourthStatistik);
+                    pieChart.setCenterText(piecentertext);
+                    changedStatistikResult();
                 }
 
 
@@ -184,15 +189,20 @@ public class TransportFourthResultActivity extends AppCompatActivity {
                     //Here after Feedback Statistik changed +1 and saved
                     thirdStatistik += 1;
 
+                    //changing the string in the center of the statistic, by tapping the button
+                    piecentertext = Float.toString(thirdStatistik);
+                    pieChart.setCenterText(piecentertext);
+
                     //Method that changed Statistik pie Chart
                     changedStatistikResult();
-
-                    //Refresh Activity
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 }
                 else {
                     Toast t = (Toast) Toast.makeText(TransportFourthResultActivity.this, "You already rated!", lengthLong);
                     t.show();
+
+                    piecentertext = Float.toString(thirdStatistik);
+                    pieChart.setCenterText(piecentertext);
+                    changedStatistikResult();
                 }
             }
         });
@@ -211,16 +221,21 @@ public class TransportFourthResultActivity extends AppCompatActivity {
                     //Here after Feedback Statistik changed +1 and saved
                     secondStatistik += 1;
 
+                    //changing the string in the center of the statistic, by tapping the button
+                    piecentertext = Float.toString(secondStatistik);
+                    pieChart.setCenterText(piecentertext);
+
                     //Method that changed Statistik pie Chart
                     changedStatistikResult();
-
-                    //Refresh Activity
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 }
 
                 else{
                     Toast t = (Toast) Toast.makeText(TransportFourthResultActivity.this, "You already rated!", lengthLong);
                     t.show();
+
+                    piecentertext = Float.toString(secondStatistik);
+                    pieChart.setCenterText(piecentertext);
+                    changedStatistikResult();
                 }
             }
         });
@@ -239,56 +254,62 @@ public class TransportFourthResultActivity extends AppCompatActivity {
                     //Here after Feedback Statistik changed +1 and saved
                     firstStatistik += 1;
 
+                    //changing the string in the center of the statistic, by tapping the button
+                    piecentertext = Float.toString(firstStatistik);
+                    pieChart.setCenterText(piecentertext);
+
                     //Method that changed Statistik pie Chart
                     changedStatistikResult();
-
-                    //Refresh Activity
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 }
 
                 else{
                     Toast t = (Toast) Toast.makeText(TransportFourthResultActivity.this, "You already rated!", lengthLong);
                     t.show();
+
+                    piecentertext = Float.toString(firstStatistik);
+                    pieChart.setCenterText(piecentertext);
+                    changedStatistikResult();
                 }
             }
         });
-
-
-        }
-
-        //Quelle approximately 60% Code from -> https://www.android-examples.com/pie-chart-graph-android-app-using-mpandroidchart/
-        //In the List added values
-        public void AddValuesToPIEENTRY(){
-            entries.add(new BarEntry(firstStatistik, 0));
-            entries.add(new BarEntry(secondStatistik, 1));
-            entries.add(new BarEntry(thirdStatistik, 2));
-            entries.add(new BarEntry(fourthStatistik, 3));
-        }
-
-
-        //Quelle approximately 60% Code from -> https://www.android-examples.com/pie-chart-graph-android-app-using-mpandroidchart/
-        // In the List added empty Strings
-        public void AddValuesToPieEntryLabels(){
-            PieEntryLabels.add("");
-            PieEntryLabels.add("");
-            PieEntryLabels.add("");
-            PieEntryLabels.add("");
-        }
-
-        //Method that changed Statistik Results
-        public void changedStatistikResult(){
-            entries = new ArrayList<>();
-            PieEntryLabels = new ArrayList<String>();
-            AddValuesToPIEENTRY();
-            AddValuesToPieEntryLabels();
-            pieDataSet = new PieDataSet(entries, "");
-            pieData = new PieData(PieEntryLabels, pieDataSet);
-            pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-            pieDataSet.setValueTextColor(Color.WHITE);
-            pieDataSet.setValueTextSize(12f);
-            pieDataSet.setSliceSpace(5f);
-            pieChart.setData(pieData);
-            pieChart.animateY(1000);
-        }
-
     }
+
+    //Quelle approximately 60% Code from -> https://www.android-examples.com/pie-chart-graph-android-app-using-mpandroidchart/
+    //In the List added values
+    public void AddValuesToPIEENTRY(){
+        entries.add(new BarEntry(firstStatistik, 0));
+        entries.add(new BarEntry(secondStatistik, 1));
+        entries.add(new BarEntry(thirdStatistik, 2));
+        entries.add(new BarEntry(fourthStatistik, 3));
+    }
+
+
+    //Quelle approximately 60% Code from -> https://www.android-examples.com/pie-chart-graph-android-app-using-mpandroidchart/
+    // In the List added empty Strings
+    public void AddValuesToPieEntryLabels(){
+        PieEntryLabels.add("");
+        PieEntryLabels.add("");
+        PieEntryLabels.add("");
+        PieEntryLabels.add("");
+    }
+
+    //Method that changed Statistik Results
+    public void changedStatistikResult(){
+        entries = new ArrayList<>();
+        PieEntryLabels = new ArrayList<String>();
+        AddValuesToPIEENTRY();
+        AddValuesToPieEntryLabels();
+        pieDataSet = new PieDataSet(entries, "");
+        pieData = new PieData(PieEntryLabels, pieDataSet);
+        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        pieDataSet.setValueTextColor(Color.WHITE);
+        pieDataSet.setValueTextSize(12f);
+        pieDataSet.setSliceSpace(5f);
+        pieChart.setCenterTextSize(34f);
+        // pieChart.setCenterTextSizePixels(10f);
+        pieChart.setData(pieData);
+        pieChart.animateY(1600);
+    }
+
+
+}

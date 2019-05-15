@@ -8,8 +8,10 @@
 
     <ImageView
         android:id="@+id/listview_image"
-        android:layout_width="118dp"
-        android:layout_height="118dp"
+        android:layout_width="87dp"
+        android:layout_height="81dp"
+        android:background="@android:drawable/toast_frame"
+        android:backgroundTint="@color/common_google_signin_btn_text_dark_disabled"
         android:padding="3dp" />
 
     <LinearLayout

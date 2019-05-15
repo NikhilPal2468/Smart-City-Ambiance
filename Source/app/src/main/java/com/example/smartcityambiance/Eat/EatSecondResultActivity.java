@@ -32,12 +32,14 @@ public class EatSecondResultActivity extends AppCompatActivity {
     private Button feedback;
 
     private boolean flag = true;
-    private boolean rating = true;
+    private static boolean rating = true;
 
-    private float firstStatistik = 0;
-    private float secondStatistik = 0;
-    private float thirdStatistik = 0;
-    private float fourthStatistik = 0;
+    static String piecentertext;
+
+    private static float firstStatistik = 15;
+    private static float secondStatistik = 22;
+    private static float thirdStatistik = 38;
+    private static float fourthStatistik = 9;
 
     //Quelle https://www.android-examples.com/pie-chart-graph-android-app-using-mpandroidchart/
     PieChart pieChart ;
@@ -60,30 +62,29 @@ public class EatSecondResultActivity extends AppCompatActivity {
 
         // at the beginning Add default Piechart
         if(flag) {
-            //Default Statistik Values at the beginning
-            firstStatistik = 35f;
-            secondStatistik = 25f;
-            thirdStatistik = 15f;
-            fourthStatistik = 25f;
             // Two ArrayList, One for Statistik value and position, and second for empty STring
             entries = new ArrayList<>();
             PieEntryLabels = new ArrayList<String>();
+
             //Methods are called
             AddValuesToPIEENTRY();
             AddValuesToPieEntryLabels();
+
             //Add first entries LIst in pieDataset and then empty String und pieset in pieData
             pieDataSet = new PieDataSet(entries, "");
             pieData = new PieData(PieEntryLabels, pieDataSet);
+
             // pieChart Colors textsize etc.
             pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
             pieDataSet.setValueTextColor(Color.WHITE);
             pieDataSet.setValueTextSize(12f);
             pieDataSet.setSliceSpace(5f);
+            pieChart.setCenterTextSize(34f);
+            //pieChart.setCenterTextSizePixels(10f);
+
             // Set pieData in pieChart
             pieChart.setData(pieData);
-
-            pieChart.animateY(1000);
-
+            pieChart.animateY(1600);
             flag = false;
 
         }
@@ -152,16 +153,21 @@ public class EatSecondResultActivity extends AppCompatActivity {
                     //Here after Feedback Statistik changed +1 and saved
                     fourthStatistik += 1;
 
+                    piecentertext = Float.toString(fourthStatistik);
+                    pieChart.setCenterText(piecentertext);
+
                     //Method that changed Statistik pie Chart
                     changedStatistikResult();
 
-                    //Refresh Activity
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 }
                 else {
 
                     Toast t = (Toast) Toast.makeText(EatSecondResultActivity.this, "You already rated!", lengthLong);
                     t.show();
+
+                    piecentertext = Float.toString(fourthStatistik);
+                    pieChart.setCenterText(piecentertext);
+                    changedStatistikResult();
                 }
 
 
@@ -182,15 +188,19 @@ public class EatSecondResultActivity extends AppCompatActivity {
                     //Here after Feedback Statistik changed +1 and saved
                     thirdStatistik += 1;
 
+                    piecentertext = Float.toString(thirdStatistik);
+                    pieChart.setCenterText(piecentertext);
+
                     //Method that changed Statistik pie Chart
                     changedStatistikResult();
-
-                    //Refresh Activity
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 }
                 else {
                     Toast t = (Toast) Toast.makeText(EatSecondResultActivity.this, "You already rated!", lengthLong);
                     t.show();
+
+                    piecentertext = Float.toString(thirdStatistik);
+                    pieChart.setCenterText(piecentertext);
+                    changedStatistikResult();
                 }
             }
         });
@@ -209,16 +219,20 @@ public class EatSecondResultActivity extends AppCompatActivity {
                     //Here after Feedback Statistik changed +1 and saved
                     secondStatistik += 1;
 
+                    piecentertext = Float.toString(secondStatistik);
+                    pieChart.setCenterText(piecentertext);
+
                     //Method that changed Statistik pie Chart
                     changedStatistikResult();
-
-                    //Refresh Activity
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 }
 
                 else{
                     Toast t = (Toast) Toast.makeText(EatSecondResultActivity.this, "You already rated!", lengthLong);
                     t.show();
+
+                    piecentertext = Float.toString(secondStatistik);
+                    pieChart.setCenterText(piecentertext);
+                    changedStatistikResult();
                 }
             }
         });
@@ -237,16 +251,20 @@ public class EatSecondResultActivity extends AppCompatActivity {
                     //Here after Feedback Statistik changed +1 and saved
                     firstStatistik += 1;
 
+                    piecentertext = Float.toString(firstStatistik);
+                    pieChart.setCenterText(piecentertext);
+
                     //Method that changed Statistik pie Chart
                     changedStatistikResult();
-
-                    //Refresh Activity
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 }
 
                 else{
                     Toast t = (Toast) Toast.makeText(EatSecondResultActivity.this, "You already rated!", lengthLong);
                     t.show();
+
+                    piecentertext = Float.toString(firstStatistik);
+                    pieChart.setCenterText(piecentertext);
+                    changedStatistikResult();
                 }
             }
         });
@@ -283,8 +301,10 @@ public class EatSecondResultActivity extends AppCompatActivity {
         pieDataSet.setValueTextColor(Color.WHITE);
         pieDataSet.setValueTextSize(12f);
         pieDataSet.setSliceSpace(5f);
+        pieChart.setCenterTextSize(34f);
+        // pieChart.setCenterTextSizePixels(10f);
         pieChart.setData(pieData);
-        pieChart.animateY(1000);
+        pieChart.animateY(1600);
     }
 
 
