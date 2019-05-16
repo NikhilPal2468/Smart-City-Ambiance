@@ -122,7 +122,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <Button
-            android:id="@+id/galleryirishid"
+            android:id="@+id/galleryoneid"
             style="@android:style/Widget.DeviceDefault.Button.Borderless"
             android:layout_width="131dp"
             android:layout_height="43dp"
@@ -135,7 +135,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/feedbackirishid"
+            android:id="@+id/feedbackfourtid"
             style="@android:style/Widget.DeviceDefault.Button.Borderless"
             android:layout_width="120dp"
             android:layout_height="43dp"
@@ -149,7 +149,7 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/infoirishid"
+            android:id="@+id/infoid"
             style="@android:style/Widget.Material.Button.Borderless.Small"
             android:layout_width="121dp"
             android:layout_height="42dp"

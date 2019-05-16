@@ -101,7 +101,7 @@ public class EatFourthResultActivity extends AppCompatActivity {
         //Buttons for indo gallery and feedback
         info = (Button) findViewById(R.id.infoirishid);
         gallery = (Button) findViewById(R.id.galleryirishid);
-        feedback = (Button) findViewById(R.id.feedbackirishid);
+        feedback = (Button) findViewById(R.id.feedbackfourtid);
 
 
         //String for toast
