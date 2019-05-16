@@ -24,7 +24,8 @@ public class InfoActivity extends FragmentActivity  implements OnMapReadyCallbac
 
 
 
-
+    //The URL for the barchart: https://www.android-examples.com/create-bar-chart-graph-using-mpandroidchart-library/
+    //We used it as a pattern and took some changes to make it fit for our environment and design
     private GoogleMap mMap;
 
     BarChart chart ;
@@ -39,7 +40,7 @@ public class InfoActivity extends FragmentActivity  implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
-
+        //in this block blow the chart is simply set, the values initialized and the design adjusted
         chart = (BarChart) findViewById(R.id.chart1);
         BARENTRY = new ArrayList<>();
         BarEntryLabels = new ArrayList<String>();

@@ -25,6 +25,8 @@ public class TransportInfoActivity extends FragmentActivity implements OnMapRead
 
     private GoogleMap mMap;
 
+    //The URL for the barchart: https://www.android-examples.com/create-bar-chart-graph-using-mpandroidchart-library/
+    //We used it as a pattern and took some changes to make it fit for our environment and design
     BarChart chart ;
     ArrayList<BarEntry> BARENTRY ;
     ArrayList<String> BarEntryLabels ;
@@ -37,6 +39,7 @@ public class TransportInfoActivity extends FragmentActivity implements OnMapRead
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transport_info);
 
+        //in this block blow the chart is simply set, the values initialized and the design adjusted
         chart = (BarChart) findViewById(R.id.chart1);
         BARENTRY = new ArrayList<>();
         BarEntryLabels = new ArrayList<String>();
