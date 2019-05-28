@@ -1,6 +1,3 @@
-## Readme - M3
-
-* Gruppe:	[Montag]
 * Team-Nr.: 113
 * Projektthema: Smart City Ambiance
 
@@ -23,17 +20,4 @@ Externe Libraries und Frameworks:
      'com.android.support:cardview-v7:27.1.1'
      'com.github.PhilJay:MPAndroidChart:v2.2.4'
      'com.google.android.gms:play-services-maps:16.0.0'
-]
-
-Dauer der Entwicklung:
-[100 Stunden]
-
-Weitere Anmerkungen:
-[
-Falls die App auf einem Anderen Gerät getestet werden soll, um die richtige Auflösung zu erhalten kann uner "Einstellungen->Entwickleroptionen->Zeichnung (Mindestbreite 420dp) angegeben werden. "
-
-Úm die Suche im SearchView durchzuführen können nur bestimmte Stichworte gesucht werden, da keine echte DB im Hintergrund eingebunden ist.
-Stichwörter: italian food“, „good food“, „public transport“, „main station“,
-„party“, “big events”, “südtiroler platz”, “first Vienna”, “nice place to live”, 
-“meet people”, “austria center”, “train”, “good restaurant”, "cozy evening", "bars","oebb", "meet people", "international transport", "the italian", "nice place to live"
 ]
