@@ -1,16 +1,18 @@
 * Team-Nr.: 113
-* Projektthema: Smart City Ambiance
+* Projektthema (Project Theme): Smart City Ambiance
 
-### Implementierung
+### Implementierung (Implementation):
 
 Framework:	[Android]
 
 API-Version:	[Android Lollipop 5.1 API 20]
 
 GerÃ¤t(e), auf dem(denen) getestet wurde:
+(Device(s) tested on):
 [Galaxy S6 Andorid 7.0 API 24]
 
 Externe Libraries und Frameworks:
+(External Libraries and Frameworks):
 [
      'com.android.support:support-annotations:27.1.1'
      'android.arch.lifecycle:extensions:1.1.1'
